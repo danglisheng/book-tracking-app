@@ -1,22 +1,20 @@
-import React,{ Component } from 'react'
+import React from 'react'
 import Book from './Book'
-class BooksGrid extends Component {
-	render() {
-		return (
+function BooksGrid(props) {
+	return (
 			<ol className="books-grid">
 				{
-					this.props.books.map((book)=>{
+					props.books.map((book)=>{
 						return (
 							<li key={ book.id }>
 								<Book  book={ book }
-								changeBookType={ this.props.changeBookType }
-								fromSearchPage={ this.props.fromSearchPage}/>
+								changeBookType={ props.changeBookType }
+								fromSearchPage={ props.fromSearchPage}/>
 							</li>
 							)
 					})
 				}
 			</ol>
 			);
-	}
 }
 export default BooksGrid

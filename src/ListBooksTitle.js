@@ -1,9 +1,8 @@
-import React,{ Component } from 'react'
-class ListBooksTitle extends Component {
-	render() {
-		return (<div className="list-books-title">
+import React from 'react'
+function ListBooksTitle(){
+	return (<div className="list-books-title">
               <h1>MyReads</h1>
             </div>)
-	}
+	
 }
 export default ListBooksTitle

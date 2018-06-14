@@ -1,20 +1,17 @@
-import React,{ Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import ListBooksTitle from './ListBooksTitle'
 import ListBooksContent from './ListBooksContent'
-class ListBooks extends Component {
-	render(){
-		return (
-			<div className="list-books">
+function ListBooks(props) {
+  return (<div className="list-books">
             <ListBooksTitle/>
-            <ListBooksContent books={this.props.books} 
-              changeBookType={this.props.changeBookType}
+            <ListBooksContent books={props.books} 
+              changeBookType={props.changeBookType}
             />
             <div className="open-search">
               <Link to="/search">Add a book</Link>
             </div>
           </div>
-			);
-	}
+          );
 }
 export default ListBooks

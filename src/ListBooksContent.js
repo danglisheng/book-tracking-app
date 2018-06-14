@@ -1,7 +1,6 @@
-import React,{ Component } from 'react'
+import React from 'react'
 import BookShelf from './BookShelf'
-class ListBooksContent extends  Component {
-  render() {
+function ListBooksContent(props) {
     const titles=['Currently Reading','Want to Read','Read'];
     const shelves=['currentlyReading','wantToRead','read'];
     /* 标题数组和书架数组是一一对应的，遍历标题数组，
@@ -11,11 +10,11 @@ class ListBooksContent extends  Component {
      * 最后返回BookShelf组件，作为数组bookShelves的元素。
     */
     const bookShelves=titles.map((title,idx)=>{
-      const classifiedBooks=this.props.books.filter(
+      const classifiedBooks=props.books.filter(
         (book)=>book.shelf===shelves[idx]);
       
       return <BookShelf title={title} books={ classifiedBooks } key={ shelves[idx] }
-        changeBookType={ this.props.changeBookType }
+        changeBookType={ props.changeBookType }
       />
       }); 
     
@@ -26,6 +25,6 @@ class ListBooksContent extends  Component {
         </div>
       </div>
 			);
-	}
+	
 }
 export default ListBooksContent
