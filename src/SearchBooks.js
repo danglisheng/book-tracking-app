@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
+import * as _ from "lodash";
 import BooksGrid from "./BooksGrid";
 class SearchBooks extends Component {
   state = {
@@ -13,8 +14,7 @@ class SearchBooks extends Component {
     this.errorNode = errorNode;
   }
   /* 文本框change事件的处理函数*/
-  searchItem(e) {
-    const target = e.target;
+  searchItem = _.debounce(target => {
     /* 若文本框被清空，则清空books数组，不显示错误信息*/
     if (target.value === "") {
       this.errorNode.style.display = "none";
@@ -54,7 +54,8 @@ class SearchBooks extends Component {
         this.setState({ books: [] });
       }
     });
-  }
+  }, 100);
+
   render() {
     return (
       <div className="search-books">
@@ -75,7 +76,7 @@ class SearchBooks extends Component {
               type="text"
               placeholder="Search by title or author"
               onChange={e => {
-                this.searchItem(e);
+                this.searchItem(e.target);
               }}
             />
           </div>
